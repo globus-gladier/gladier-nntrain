@@ -7,7 +7,7 @@ class TransferData(GladierBaseTool):
         'Comment': 'Transfer a file or directory in Globus',
         'StartAt': 'TransferData',
         'States': {
-            'TransferOut': {
+            'TransferData': {
                 'Comment': 'Transfer a file or directory in Globus',
                 'Type': 'Action',
                 'ActionUrl': 'https://actions.automate.globus.org/transfer/transfer',

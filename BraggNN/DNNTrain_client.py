@@ -6,15 +6,17 @@ import yaml
 
 ##Base Gladier imports
 from gladier import GladierBaseClient, generate_flow_definition
+import gladier.tests
 
 ##Import tools that will be used on the flow definition
-from .tools.transfer_data import TransferData
-from .tools.model_train import ModelTrain
-from .tools.transfer_model import TransferModel
+from tools.transfer_data import TransferData
+from tools.model_train import ModelTrain
+from tools.transfer_model import TransferModel
 
 ##Generate flow based on the collection of `gladier_tools` 
 @generate_flow_definition
 class DNN_Train_Client(GladierBaseClient):
+    globus_group = '0bbe98ef-de8f-11eb-9e93-3db9c47b68ba'
     gladier_tools = [
         TransferData,
         ModelTrain,

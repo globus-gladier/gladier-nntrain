@@ -1,12 +1,16 @@
 from gladier import GladierBaseTool, generate_flow_definition
 
 def model_train(wdir, cmde, **data):
-    cmd_aug = cmde.split('#')
     import subprocess, os
-    os.chdir(wdir) 
-    result = subprocess.run(cmd_aug, stdout=subprocess.PIPE)
-    return result.stdout.decode('utf-8')
 
+    os.chdir(wdir) 
+
+    cmd = cmde.split('#')
+
+    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                             shell=True, executable='/bin/bash')
+
+    return cmd #, str(res.stdout), str(res.stderr)
 
 @generate_flow_definition
 class ModelTrain(GladierBaseTool):
@@ -16,3 +20,5 @@ class ModelTrain(GladierBaseTool):
         'cmde', 
         'funcx_endpoint_compute'
         ]
+
+

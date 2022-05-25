@@ -18,7 +18,7 @@ class TransferModel(GladierBaseTool):
                         {
                             'source_path.$': '$.input.mdl_path',
                             'destination_path.$': '$.input.dest_path',
-                            'recursive.$': '$.input.transfer_recursive',
+                            'recursive.$': '$.input.model_transfer_recursive',
                         }
                     ]
                 },
@@ -30,8 +30,8 @@ class TransferModel(GladierBaseTool):
     }
 
     flow_input = {
-        'transfer_sync_level': 'checksum',
-        'transfer_recursive': True,
+        'model_transfer_sync_level': 'checksum',
+        'model_transfer_recursive': True,
     }
     required_input = [
         'comp_endpoint',

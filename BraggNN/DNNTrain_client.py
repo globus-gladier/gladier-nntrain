@@ -6,7 +6,9 @@ import yaml
 
 ##Base Gladier imports
 from gladier import GladierBaseClient, generate_flow_definition
-import gladier.tests
+
+#debugging messages
+#import gladier.tests
 
 ##Import tools that will be used on the flow definition
 from tools.transfer_data import TransferData

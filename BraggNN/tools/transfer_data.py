@@ -18,7 +18,7 @@ class TransferData(GladierBaseTool):
                         {
                             'source_path.$': '$.input.data_path',
                             'destination_path.$': '$.input.comp_path',
-                            'recursive.$': '$.input.data_transfer_recursive',
+                            'recursive': True,
                         }
                     ]
                 },
@@ -29,10 +29,7 @@ class TransferData(GladierBaseTool):
         }
     }
 
-    flow_input = {
-        'data_transfer_sync_level': 'checksum',
-        'data_transfer_recursive': True,
-    }
+    flow_input = {}
     required_input = [
         'data_endpoint',
         'data_path',

@@ -1,6 +1,6 @@
 from gladier import GladierBaseTool, generate_flow_definition
 
-def model_train(wdir, cmde):
+def model_train(wdir, cmde, **data):
     cmd_aug = cmde.split('#')
     import subprocess, os
     os.chdir(wdir) 

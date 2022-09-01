@@ -1,6 +1,6 @@
 from gladier import GladierBaseTool, generate_flow_definition
 
-def simu_data_proc_for_CookieNetAE(cure_ddir, cure_tfn, cure_vfn, **data):
+def funcX_simu_data_proc_for_CookieNetAE(cure_ddir, cure_tfn, cure_vfn, **data):
     import glob, h5py, os
     import numpy as np
     
@@ -62,10 +62,10 @@ def simu_data_proc_for_CookieNetAE(cure_ddir, cure_tfn, cure_vfn, **data):
     return cure_tfn, cure_vfn
 
 @generate_flow_definition(modifiers={
-    simu_data_proc_for_CookieNetAE: {'endpoint': 'fx_ep_cure'}
+    funcX_simu_data_proc_for_CookieNetAE: {'endpoint': 'fx_ep_cure'}
 })
 class CureData(GladierBaseTool):
-    funcx_functions = [simu_data_proc_for_CookieNetAE]
+    funcx_functions = [funcX_simu_data_proc_for_CookieNetAE]
     required_input = [
         'cure_ddir',
         'cure_tfn', 

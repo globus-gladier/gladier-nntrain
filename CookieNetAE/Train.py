@@ -1,14 +1,8 @@
-#!/usr/bin/env python
 
-##Basic Python import's
 import argparse
 import yaml
 
-##Base Gladier imports
 from gladier import GladierBaseClient, generate_flow_definition
-
-#debugging messages
-#import gladier.tests
 
 ##Import tools that will be used on the flow definition
 from tools.transfer_data import TransferData
@@ -60,33 +54,26 @@ def create_input_cfg(cfg):
             "dest_path"    : wf_cfg['dst_model']['PATH'],
         }
     }
-    return flow_args
+    return flow_args, wf_cfg['wf_name']
 
-def train_flow(cfg):
+def train_with_flow(cfg):
    ##The first step Client instance
     trainClient = CookieNetAE_Train_Client()
 
-    if cfg==None:
-        print("bad cfg")
-        return
-    else:
-        flow_input = create_input_cfg(cfg)
-    
-    client_run_label = 'Gladier CookieNetAE Example'
-                      
-    flow_run = trainClient.run_flow(flow_input=flow_input, label=client_run_label)
+    flow_input, wf_label = create_input_cfg(cfg)
+
+    flow_run = trainClient.run_flow(flow_input=flow_input, label=wf_label)
 
     print('Run started with ID: ' + flow_run['action_id'])
-    print('https://app.globus.org/runs/' + flow_run['action_id'])
 
 ##  Arguments for the execution of this file as a stand-alone client
 def arg_parse():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', help='YAML config File', default=None)
+    parser.add_argument('--config', help='YAML config File', required=True)
     return parser.parse_args()
 
 ## Main execution of this "file" as a Standalone client
 if __name__ == '__main__':
 
     args = arg_parse()
-    train_flow(args.config)
+    train_with_flow(args.config)

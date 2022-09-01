@@ -16,7 +16,7 @@ class TransferModel(GladierBaseTool):
                     'destination_endpoint_id.$': '$.input.dest_endpoint',
                     'transfer_items': [
                         {
-                            'source_path.$': '$.input.mdl_path',
+                            'source_path.$': '$.input.aisys_mdl_path',
                             'destination_path.$': '$.input.dest_path',
                             'recursive': True,
                         }

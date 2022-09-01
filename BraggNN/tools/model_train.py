@@ -7,10 +7,9 @@ def model_train(wdir, cmde, **data):
 
     cmd = cmde.split('#')
 
-    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                             shell=True, executable='/bin/bash')
+    res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    return cmd #, str(res.stdout), str(res.stderr)
+    return str(res.stdout), str(res.stderr)
 
 @generate_flow_definition
 class ModelTrain(GladierBaseTool):
